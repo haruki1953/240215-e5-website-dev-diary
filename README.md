@@ -29,3 +29,8 @@ e5分享网站开发记录
 
 ### 240217
 整理并描述了每个页面的功能
+
+
+### 240218
+在Node.js中，有一些工具可以像Django的admin那样快速可视化操作SQLite数据库。  
+Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, PostgreSQL, SQLite等数据库创建管理界面
