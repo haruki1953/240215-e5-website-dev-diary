@@ -75,7 +75,7 @@ eslint-config-airbnb-base@latest eslint@^7.32.0 || ^8.2.0 eslint-plugin-import@^
 
 
 ### 步骤三：安装并配置 VSCode ESLint 插件
-打开 VSCode 设置（Ctrl + ，或者菜单栏中选择“文件” > “首选项” > “设置”），在设置中添加以下配置以启用在保存时自动修复错误的功能：
+打开 VSCode 设置（`Ctrl + ，`或者菜单栏中选择“文件” > “首选项” > “设置”），在设置中添加以下配置以启用在保存时自动修复错误的功能：
 ```json
 "editor.codeActionsOnSave": {
 	"source.fixAll": true
@@ -83,3 +83,4 @@ eslint-config-airbnb-base@latest eslint@^7.32.0 || ^8.2.0 eslint-plugin-import@^
 ```
 
 如果行尾报错，将行尾序列改为LF
+`Ctrl + ，` 搜索eol，将默认行尾字符修改为 `\n`
