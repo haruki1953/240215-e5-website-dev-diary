@@ -1,0 +1,2 @@
+SELECT * FROM user;
+SELECT id, username, password_hash, email FROM user;

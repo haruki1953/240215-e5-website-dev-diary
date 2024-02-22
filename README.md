@@ -53,10 +53,13 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 3. 配置 cors 跨域
 4. 提交至 development 分支
 
+
 ### 240221
 1. 安装sqlite3，好像因为缺少编译工具会报错，需要设置代理，以不在本地编译而从远程服务器下载预编译的二进制包。
     [【02_后端开发记录】二、数据库创建](02_后端开发记录.md#二、数据库创建)  
 2. orm框架Sequelize的基本使用以及在项目中的使用方式
     [【node项目中使用sqlite数据库】](笔记/node项目中使用sqlite数据库.md#)
 
-发现sqlite3不支持async/await，所以又去找orm框架，挑花了眼，然后又遇见了安装sqlite3的编译问题，感觉自己好渺小，差点玉玉了，看了两集福星小子缓了缓（
+
+### 240222
+完成了sequelize在项目中的配置，做了写接口前的准备

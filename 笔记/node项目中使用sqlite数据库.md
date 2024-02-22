@@ -321,7 +321,6 @@ const { sequelize, initializeDatabase } = require('./models/index');
 |   |-- index.js
 |   `-- user.js
 `-- app.js
-
 ```
 
 首先是 `/db/index.js` 创建 Sequelize 实例并连接数据库，最后导出：
@@ -379,7 +378,7 @@ module.exports = {
 
 最后是 `/db/initialize.js` 定义初始化函数并导出：
 ```javascript
-const { sequelize } = require('./index');
+const sequelize = require('./index');
 const { User } = require('../models/index');
 
 // 数据库初始化函数
@@ -432,3 +431,5 @@ const initializeDatabase = require('./db/initialize');
   }
 })();
 ```
+
+
