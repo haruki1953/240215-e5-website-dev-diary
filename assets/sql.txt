@@ -1,2 +1,7 @@
 SELECT * FROM user;
 SELECT id, username, password_hash, email FROM user;
+
+.headers on
+.mode column
+
+SELECT id, username, email FROM user;

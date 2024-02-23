@@ -62,4 +62,9 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 
 
 ### 240222
-完成了sequelize在项目中的配置，做了写接口前的准备
+完成了sequelize在项目中的配置，做了写接口前的准备  
+试着弄了adminjs，但感觉太大了就放弃了
+
+
+### 240222
+[03_接口文档](03_接口文档.md)

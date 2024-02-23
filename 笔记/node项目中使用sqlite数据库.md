@@ -433,3 +433,47 @@ const initializeDatabase = require('./db/initialize');
 ```
 
 
+## 具体使用
+### 阻止 Sequelize 在控制台输出执行的 SQL 查询语句
+要阻止 Sequelize 在控制台输出执行的 SQL 查询语句，你可以在创建 Sequelize 实例时设置 `logging` 选项为 `false` 或者一个自定义的日志记录函数。
+例如：
+```javascript
+const sequelize = new Sequelize(database, username, password, {
+  host: host,
+  dialect: 'mysql', // or any other dialect
+  logging: false // 设置为 false 以禁用日志记录
+});
+```
+
+或者，如果你想要自定义日志记录，你可以传入一个函数：
+```javascript
+const sequelize = new Sequelize(database, username, password, {
+  host: host,
+  dialect: 'mysql', // or any other dialect
+  logging: (msg) => {
+    // 自定义日志记录逻辑
+    // 在这里可以根据你的需求记录日志到文件、数据库等
+  }
+});
+```
+
+无论你选择哪种方法，设置 `logging` 选项后，Sequelize 将不会在控制台输出执行的 SQL 查询语句。
+
+
+### `await User.findOne()` 方法不会抛出错误
+对的，`User.findOne()` 方法在没有找到匹配的结果时不会抛出错误，而是返回 `null`。因此，你无需担心在查询过程中抛出错误。你可以根据返回的结果来判断是否已经找到了匹配的用户。
+
+以下是一个示例，演示了如何使用 `User.findOne()` 方法：
+```javascript
+const existingUser = await User.findOne({ where: { username: 'example' } });
+
+if (existingUser) {
+  // 如果找到了匹配的用户
+  console.log('已存在的用户:', existingUser);
+} else {
+  // 如果没有找到匹配的用户
+  console.log('没有找到匹配的用户');
+}
+```
+
+在这个示例中，如果存在与条件匹配的用户，则 `existingUser` 变量将保存该用户对象；如果没有找到匹配的用户，则 `existingUser` 将为 `null`。因此，你可以根据 `existingUser` 的值来决定下一步的操作，而不需要担心抛出错误的情况。
