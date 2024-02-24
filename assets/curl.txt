@@ -1,0 +1,32 @@
+curl -X PATCH \
+  http://127.0.0.1:3007/user/profile \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJleGFtcGxlX3VzZXIiLCJpYXQiOjE3MDg3NjI2MjIsImV4cCI6MTcxOTEzMDYyMn0.ZzknPV0I2fXFO-pzhekw0PK8w5oDgOZWqwhWAJwEpQ0' \
+  -d '{
+    "nickname": "new_nickname",
+    "contactInfo": "new_contact_info",
+    "bio": "new_bio"
+}'
+
+curl -X GET \
+  http://127.0.0.1:3007/user/profile \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJleGFtcGxlX3VzZXIiLCJpYXQiOjE3MDg3NjI2MjIsImV4cCI6MTcxOTEzMDYyMn0.ZzknPV0I2fXFO-pzhekw0PK8w5oDgOZWqwhWAJwEpQ0'
+
+
+curl -X POST \
+  http://127.0.0.1:3007/auth/register \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "username": "example_user",
+    "password": "example_password",
+    "email": "example@example.com"
+}'
+
+curl -X POST \
+  http://127.0.0.1:3007/auth/register \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "username": "test1",
+    "password": "example_password",
+    "email": "t@example.com"
+}'

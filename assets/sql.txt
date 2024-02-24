@@ -4,4 +4,11 @@ SELECT id, username, password_hash, email FROM user;
 .headers on
 .mode column
 
-SELECT id, username, email FROM user;
+SELECT id, username, email, nickname, contact_info, bio FROM user;
+SELECT * FROM user_notification;
+SELECT * FROM user_e5_post;
+SELECT * FROM users_e5_shared_info;
+
+SELECT id, username, level FROM admin;
+
+INSERT INTO user_notification (user_id) VALUES (3);
