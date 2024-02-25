@@ -4,7 +4,10 @@ SELECT id, username, password_hash, email FROM user;
 .headers on
 .mode column
 
+SELECT id, username, email, e5_subscription_date, e5_expiration_date FROM user;
+SELECT id, username, email, avatar FROM user;
 SELECT id, username, email, nickname, contact_info, bio FROM user;
+SELECT id, username, email FROM user;
 SELECT * FROM user_notification;
 SELECT * FROM user_e5_post;
 SELECT * FROM users_e5_shared_info;

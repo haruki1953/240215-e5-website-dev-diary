@@ -83,3 +83,10 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 **完善**
 - 测试接口
 - 完善接口文档
+
+
+### 240225
+完成了用户信息修改相关接口
+- multer 解析表单数据
+- sharp 压缩处理图片
+- moment 解析日期并设置时区
