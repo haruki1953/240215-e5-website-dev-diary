@@ -1,3 +1,56 @@
+curl -X PUT \
+  http://127.0.0.1:3007/e5share/register \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
+  -H "Content-Type: application/json" \
+  -d '{"subscriptionDate": "2024-02-24", "expirationDate": "2024-05-24"}'
+
+
+curl -X DELETE \
+  http://127.0.0.1:3007/e5/posts \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk"
+
+curl -X DELETE \
+  "http://127.0.0.1:3007/e5/post?e5id=1&uuid=57adb444-1976-4d1c-97ca-290f337e8369" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk"
+
+curl -X POST \
+  http://127.0.0.1:3007/e5/post \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  -d '{
+    "e5id": 2,
+    "content": "test"
+  }'
+
+curl -X GET \
+  http://127.0.0.1:3007/e5/posts/1 \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk"
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk
+
+curl -X POST \
+  http://127.0.0.1:3007/auth/loginByUsername \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "username": "aaaaaa",
+    "password": "aaaaaa"
+}'
+
+curl -X POST \
+  http://127.0.0.1:3007/auth/register \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "username": "aaaaaa",
+    "password": "aaaaaa",
+    "email": "a@example.com"
+}'
+
+以上是动态测试
+
+curl -X DELETE \
+  http://127.0.0.1:3007/e5/posts \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJleGFtcGxlX3VzZXIiLCJpYXQiOjE3MDg3NjI2MjIsImV4cCI6MTcxOTEzMDYyMn0.ZzknPV0I2fXFO-pzhekw0PK8w5oDgOZWqwhWAJwEpQ0"
+
 curl -X DELETE \
   "http://127.0.0.1:3007/e5/post?e5id=1&uuid=57adb444-1976-4d1c-97ca-290f337e8369" \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJleGFtcGxlX3VzZXIiLCJpYXQiOjE3MDg3NjI2MjIsImV4cCI6MTcxOTEzMDYyMn0.ZzknPV0I2fXFO-pzhekw0PK8w5oDgOZWqwhWAJwEpQ0"
@@ -11,6 +64,10 @@ curl -X POST \
     "e5id": 1,
     "content": "这是一条测试动态内容，不超过500字。"
   }'
+
+curl -X GET \
+  http://127.0.0.1:3007/e5/posts/1 \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJleGFtcGxlX3VzZXIiLCJpYXQiOjE3MDg3NjI2MjIsImV4cCI6MTcxOTEzMDYyMn0.ZzknPV0I2fXFO-pzhekw0PK8w5oDgOZWqwhWAJwEpQ0"
 
 curl -X PUT \
   http://127.0.0.1:3007/user/e5info \

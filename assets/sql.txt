@@ -19,4 +19,4 @@ INSERT INTO user_notification (user_id) VALUES (3);
 
 SELECT id, user_id, posts FROM user_e5_post;
 
-UPDATE user SET account_status = 'sharing' WHERE id = 1;
+UPDATE user SET account_status = 'active' WHERE id = 5;
