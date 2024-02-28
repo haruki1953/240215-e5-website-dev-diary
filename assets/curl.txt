@@ -1,3 +1,10 @@
+
+curl -X PUT \
+  http://127.0.0.1:3007/e5share/cancel \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
+  -H "Content-Type: application/json" \
+  -d '{"message": "取消分享，原因：xxx"}'
+
 curl -X PUT \
   http://127.0.0.1:3007/e5share/register \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
