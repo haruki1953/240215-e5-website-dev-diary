@@ -10,28 +10,40 @@ SELECT id, username, email, e5_subscription_date, e5_expiration_date FROM user;
 SELECT id, username, email, avatar FROM user;
 SELECT id, username, email, nickname, contact_info, bio FROM user;
 SELECT id, username, email FROM user;
+UPDATE user SET account_status = 'active' WHERE id = 5;
+
+
+SELECT user_id, notifications FROM user_notification;
 SELECT * FROM user_notification;
-SELECT * FROM user_e5_post;
-SELECT * FROM users_e5_shared_info;
-
-SELECT id, username, level FROM admin;
-
+UPDATE user_notification SET notifications = '[]';
 INSERT INTO user_notification (user_id) VALUES (3);
 
 SELECT id, user_id, posts FROM user_e5_post;
+SELECT * FROM user_e5_post;
 
-UPDATE user SET account_status = 'active' WHERE id = 5;
+SELECT * FROM user_e5_shared_info;
+
+SELECT id, username, level FROM admin;
+
+
+
+SELECT id, username, email, account_status, helping_users, helping_by_users FROM user;SELECT user_id, notifications FROM user_notification;SELECT * FROM user_e5_shared_info;
+
+
+
+
+
+
+
 
 -- 设置 "aaaaaa" 用户的 helping_users 列为数组 [2, 3]
 UPDATE user
 SET helping_users = '[2, 3]'
 WHERE id = 5;
-
 -- 设置 "test1" 用户的 helping_by_users 列为数组 [5]
 UPDATE user
 SET helping_by_users = '[5]'
 WHERE id = 2;
-
 -- 设置 "test2" 用户的 helping_by_users 列为数组 [5]
 UPDATE user
 SET helping_by_users = '[5]'

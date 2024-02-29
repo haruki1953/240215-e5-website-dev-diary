@@ -1,3 +1,101 @@
+curl -X PUT \
+  http://127.0.0.1:3007/e5share/stop/receiving \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJiYmJiYmIiLCJpYXQiOjE3MDkxOTg4ODQsImV4cCI6MTcxOTU2Njg4NH0.BERkOPij2dJ6yo-TfI3cfXQOd_rCx68i1XBwsiLAoZ0" \
+  -H "Content-Type: application/json" \
+  -d '{"e5id": 5, "message": "stop receiving message"}'
+
+curl -X PUT \
+  http://127.0.0.1:3007/e5share/confirmation/accept \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJiYmJiYmIiLCJpYXQiOjE3MDkxOTg4ODQsImV4cCI6MTcxOTU2Njg4NH0.BERkOPij2dJ6yo-TfI3cfXQOd_rCx68i1XBwsiLAoZ0" \
+  -H "Content-Type: application/json" \
+  -d '{"e5id": 5, "message": "confirmation message"}'
+
+curl -X PUT \
+  http://127.0.0.1:3007/e5share/confirmation/send \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
+  -H "Content-Type: application/json" \
+  -d '{"userId": 6, "message": "confirmation message"}'
+
+curl -X POST \
+  http://127.0.0.1:3007/e5share/info \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
+  -H "Content-Type: application/json" \
+  -d '{"userId": 6, "note": "This is note"}'
+
+
+curl -X DELETE \
+  http://127.0.0.1:3007/e5share/info/6 \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk"
+
+
+curl -X PUT \
+  http://127.0.0.1:3007/e5share/stop/sharing \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
+  -H "Content-Type: application/json" \
+  -d '{"userId": 6, "message": "stop sharing message"}'
+
+curl -X PUT \
+  http://127.0.0.1:3007/e5share/confirmation/accept \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJiYmJiYmIiLCJpYXQiOjE3MDkxOTg4ODQsImV4cCI6MTcxOTU2Njg4NH0.BERkOPij2dJ6yo-TfI3cfXQOd_rCx68i1XBwsiLAoZ0" \
+  -H "Content-Type: application/json" \
+  -d '{"e5id": 5, "message": "confirmation message"}'
+
+curl -X PUT \
+  http://127.0.0.1:3007/e5share/confirmation/send \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
+  -H "Content-Type: application/json" \
+  -d '{"userId": 6, "message": "confirmation message"}'
+
+curl -X DELETE \
+  http://127.0.0.1:3007/e5share/info/1 \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk"
+
+curl -X PATCH \
+  http://127.0.0.1:3007/e5share/info \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
+  -H "Content-Type: application/json" \
+  -d '{"userId": 5, "note": "This is note"}'
+
+
+aaaaaa: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk
+
+bbbbbb: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJiYmJiYmIiLCJpYXQiOjE3MDkxOTg4ODQsImV4cCI6MTcxOTU2Njg4NH0.BERkOPij2dJ6yo-TfI3cfXQOd_rCx68i1XBwsiLAoZ0
+
+curl -X POST \
+  http://127.0.0.1:3007/auth/login/username \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "username": "bbbbbb",
+    "password": "bbbbbb"
+}'
+
+curl -X POST \
+  http://127.0.0.1:3007/auth/register \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "username": "bbbbbb",
+    "password": "bbbbbb",
+    "email": "b@example.com"
+}'
+
+
+curl -X POST \
+  http://127.0.0.1:3007/e5share/info \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
+  -H "Content-Type: application/json" \
+  -d '{"userId": 6, "note": "This is note"}'
+
+curl -X GET \
+  http://127.0.0.1:3007/e5share/info \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk"
+
+
+curl -X POST \
+  http://127.0.0.1:3007/e5share/application \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDg5OTcxMzksImV4cCI6MTcxOTM2NTEzOX0.bUDxQyM4cW4U1arZunB7kkikJnLekrAL6fAAPmbM8Bk" \
+  -H "Content-Type: application/json" \
+  -d '{"e5id": 1, "message": "Application Message"}'
+
 
 curl -X PUT \
   http://127.0.0.1:3007/e5share/cancel \
