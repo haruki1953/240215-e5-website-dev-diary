@@ -84,3 +84,26 @@ eslint-config-airbnb-base@latest eslint@^7.32.0 || ^8.2.0 eslint-plugin-import@^
 
 如果行尾报错，将行尾序列改为LF
 `Ctrl + ，` 搜索eol，将默认行尾字符修改为 `\n`
+
+## 忽略换行符
+要配置 ESLint 忽略换行符，你可以使用`.eslintrc`文件或在`package.json`中的`eslintConfig`字段。你需要添加`"linebreak-style"`规则并将其设置为`"off"`或`"unix"`。这取决于你想要的行为。
+
+1. **使用`.eslintrc`文件：**
+```json
+{
+  "rules": {
+    "linebreak-style": ["error", "unix"]
+  }
+}
+```
+
+或者如果你想要完全禁用对换行符的检查：
+```json
+{
+  "rules": {
+    "linebreak-style": "off"
+  }
+}
+```
+
+以上配置将告诉 ESLint 忽略换行符并不再检查它们。
