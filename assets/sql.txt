@@ -4,7 +4,7 @@ SELECT id, username, password_hash, email FROM user;
 .headers on
 .mode column
 
-SELECT id, username, email, account_status, helping_users, helping_by_users FROM user;
+SELECT id, username, email, account_status, helping_users, helping_by_users, helped_users, helped_by_users FROM user;
 SELECT id, username, email, account_status FROM user;
 SELECT id, username, email, e5_subscription_date, e5_expiration_date FROM user;
 SELECT id, username, email, avatar FROM user;
@@ -27,7 +27,7 @@ SELECT id, username, level FROM admin;
 
 
 
-SELECT id, username, email, account_status, helping_users, helping_by_users FROM user;SELECT user_id, notifications FROM user_notification;SELECT * FROM user_e5_shared_info;
+SELECT id, username, email, account_status, helping_users, helping_by_users, helped_users, helped_by_users FROM user;SELECT user_id, notifications FROM user_notification;SELECT * FROM user_e5_shared_info;
 
 
 
