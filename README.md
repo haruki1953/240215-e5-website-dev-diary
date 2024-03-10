@@ -146,3 +146,6 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 ### 240309
 - 完成通知渲染
 - 首页卡片静态样式
+
+### 240310
+完成了首页卡片 e5sharing-card 的封装于数据显示
