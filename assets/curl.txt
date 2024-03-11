@@ -1,4 +1,22 @@
 curl -X PUT \
+  http://127.0.0.1:3007/e5share/register \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoicXFxcXFxIiwiaWF0IjoxNzEwMTUyMDk3LCJleHAiOjE3MjA1MjAwOTd9.lbqNQm7rr0d3CHX9jERe8Qj6dXaOkpacLjhT_Kkx84o" \
+  -H "Content-Type: application/json" \
+  -d '{"subscriptionDate": "2024-03-24", "expirationDate": "2024-05-24"}'
+
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoicXFxcXFxIiwiaWF0IjoxNzEwMTUyMDk3LCJleHAiOjE3MjA1MjAwOTd9.lbqNQm7rr0d3CHX9jERe8Qj6dXaOkpacLjhT_Kkx84o
+
+curl -X POST \
+  http://127.0.0.1:3007/e5post/post \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MDk3NzMxNTAsImV4cCI6MTcyMDE0MTE1MH0.Z3PC2fcuOaJpupq1fab-UkkVrsD0W62qPD7SLaCrUqA" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  -d '{
+    "e5id": 5,
+    "content": "test"
+  }'
+
+
+curl -X PUT \
   http://127.0.0.1:3007/e5share/stop/receiving \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJiYmJiYmIiLCJpYXQiOjE3MDkxOTg4ODQsImV4cCI6MTcxOTU2Njg4NH0.BERkOPij2dJ6yo-TfI3cfXQOd_rCx68i1XBwsiLAoZ0" \
   -H "Content-Type: application/json" \
