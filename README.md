@@ -161,3 +161,7 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 - 美化了用户卡片
 - 封装用户卡片容器 UsercardContainer
 - 将登录背景封装进配置文件
+
+### 240313
+- 完成了用户主页
+- 完善了用户卡片的布局
