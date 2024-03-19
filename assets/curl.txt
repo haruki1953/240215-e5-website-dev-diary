@@ -1,8 +1,6 @@
-curl -X PUT \
-  http://127.0.0.1:3007/e5share/register \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoicXFxcXFxIiwiaWF0IjoxNzEwMTUyMDk3LCJleHAiOjE3MjA1MjAwOTd9.lbqNQm7rr0d3CHX9jERe8Qj6dXaOkpacLjhT_Kkx84o" \
-  -H "Content-Type: application/json" \
-  -d '{"subscriptionDate": "2024-03-24", "expirationDate": "2024-05-24"}'
+curl -X GET \
+  http://127.0.0.1:3007/e5share/info \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJiYmJiYmIiLCJpYXQiOjE3MTA4MTA1NzcsImV4cCI6MTcyMTE3ODU3N30.rB-XvLYEiBKWMr5OsvQTL6NasoR3BYO5U9etNhsgJqM"
 
 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoicXFxcXFxIiwiaWF0IjoxNzEwMTUyMDk3LCJleHAiOjE3MjA1MjAwOTd9.lbqNQm7rr0d3CHX9jERe8Qj6dXaOkpacLjhT_Kkx84o
 
