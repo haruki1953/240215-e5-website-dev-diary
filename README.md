@@ -204,3 +204,6 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 - utils/initial.js 优化了数据加载时序，并重命名为 utils/dataManage.js。主要用于管理数据，初始化数据、修改信息后的更新数据、退出登录等操作都将封装于此
 
 待解决：退出登录问题，在分享页无法退出登录
+
+### 240320
+解决了退出登录问题，又简单写了分享管理页的表格
