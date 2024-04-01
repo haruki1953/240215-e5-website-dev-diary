@@ -249,3 +249,6 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 
 ### 240331
 完成了基本的静态样式
+
+### 240401
+完成了动态菜单 PostMenu
