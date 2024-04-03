@@ -258,3 +258,7 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 - 动态消息卡片 PostMessage
 - 动态发送卡片 PostSend
 - 未读状态相关功能
+
+### 240403
+- 尝试解决动态页的卡顿，姑且算是优化了一点
+- 动态关注功能，完成了功能方面的设计，明天要尽快完成功能的实现
