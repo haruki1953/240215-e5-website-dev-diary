@@ -1,3 +1,7 @@
+curl -X DELETE \
+  http://127.0.0.1:3007/user/notifications \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MTIyMTAwMTksImV4cCI6MTcyMjU3ODAxOX0.WlkjwSuHnoElzdTNZCSXDEbidURhK5Cfh17GCFTygfs"
+
 curl -X GET \
   http://127.0.0.1:3007/e5share/info \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MTA4MzkwNzUsImV4cCI6MTcyMTIwNzA3NX0.NTGH9RbPefk8CXwwZUPV-TYKzDfLIPsdHfH9d9gVOps"
