@@ -284,3 +284,6 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 	- 停止/恢复注册
 	
 3. VitePress说明文档
+
+### 240406
+设计了数据库备份，完成了启动时备份
