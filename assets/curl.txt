@@ -1,3 +1,32 @@
+curl -X PUT \
+  http://127.0.0.1:3007/admin/auth \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNzEyODM2Njg1LCJleHAiOjE3MTU0Mjg2ODV9.LyhxGd2pvmWl15CR7nRBbCXkFHT-tAESchGArzhj3xY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "username": "example_user",
+    "password": "example_password"
+}'
+
+curl -X PUT \
+  http://127.0.0.1:3007/admin \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNzEyODM2Njg1LCJleHAiOjE3MTU0Mjg2ODV9.LyhxGd2pvmWl15CR7nRBbCXkFHT-tAESchGArzhj3xY' \
+  -H 'Content-Type: application/json' \
+  -d '{ "couldRegister": true }'
+
+
+curl -X GET \
+  http://127.0.0.1:3007/admin \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNzEyODM2Njg1LCJleHAiOjE3MTU0Mjg2ODV9.LyhxGd2pvmWl15CR7nRBbCXkFHT-tAESchGArzhj3xY'
+
+
+curl -X POST \
+  http://127.0.0.1:3007/admin/login \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "username": "example_user",
+    "password": "example_password"
+}'
+
 curl -X GET \
   http://127.0.0.1:3007/user/last-login/1 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJhYWFhYWEiLCJpYXQiOjE3MTIyMTAwMTksImV4cCI6MTcyMjU3ODAxOX0.WlkjwSuHnoElzdTNZCSXDEbidURhK5Cfh17GCFTygfs"
