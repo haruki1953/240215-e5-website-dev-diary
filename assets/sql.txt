@@ -30,12 +30,6 @@ SELECT id, username, level FROM admin;
 SELECT id, username, email, account_status, helping_users, helping_by_users, helped_users, helped_by_users FROM user;SELECT user_id, notifications FROM user_notification;SELECT * FROM user_e5_shared_info;
 
 
-
-
-
-
-
-
 -- 设置 "aaaaaa" 用户的 helping_users 列为数组 [2, 3]
 UPDATE user
 SET helping_users = '[2, 3]'
@@ -48,4 +42,8 @@ WHERE id = 2;
 UPDATE user
 SET helping_by_users = '[5]'
 WHERE id = 3;
+
+删除表
+DROP TABLE IF EXISTS users_e5_shared_info;
+
 
