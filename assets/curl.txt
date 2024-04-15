@@ -43,7 +43,7 @@ curl -X PUT \
   http://127.0.0.1:3007/admin \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNzEyODM2Njg1LCJleHAiOjE3MTU0Mjg2ODV9.LyhxGd2pvmWl15CR7nRBbCXkFHT-tAESchGArzhj3xY' \
   -H 'Content-Type: application/json' \
-  -d '{ "couldRegister": false }'
+  -d '{ "couldRegister": true }'
 
 
 curl -X GET \
