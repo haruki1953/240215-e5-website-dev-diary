@@ -1,3 +1,8 @@
+curl -X GET \
+  http://154.23.240.80:54001/public/users
+
+154.23.240.80
+
 curl -X DELETE \
   "http://127.0.0.1:3007/user" \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoicXFxcXFxIiwiaWF0IjoxNzEyOTc5MDk3LCJleHAiOjE3MjMzNDcwOTd9.TFUjMAp_cvF3BH1xMI1N1bxa5fWqX32rt0EoyVbEELU"
@@ -125,6 +130,7 @@ curl -X PUT \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJiYmJiYmIiLCJpYXQiOjE3MDkxOTg4ODQsImV4cCI6MTcxOTU2Njg4NH0.BERkOPij2dJ6yo-TfI3cfXQOd_rCx68i1XBwsiLAoZ0" \
   -H "Content-Type: application/json" \
   -d '{"e5id": 5, "message": "confirmation message"}'
+
 
 curl -X PUT \
   http://127.0.0.1:3007/e5share/confirmation/send \
