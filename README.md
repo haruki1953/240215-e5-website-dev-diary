@@ -348,3 +348,8 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 - 通过环境变量来配置jwt
 - 更改了存放数据库的位置，为 data/
 - 尝试docker部署，寄，有点破防，让我缓缓，歇了
+
+### 240418
+- 由于sharp导致在部署时`Illegal instruction (core dumped)`，更换图片处理模块为jimp
+- 为了方便部署，JWT 随机生成并保存至 utils/jwtKeys.json
+- 在本地部署成功😭
