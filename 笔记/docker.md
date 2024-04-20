@@ -359,16 +359,340 @@ docker build -t docker-demo:1.0 .
     ```
 
 
+## 2.4 网络
+[https://docs.docker.com/engine/reference/commandline/network/](https://docs.docker.com/engine/reference/commandline/network/)
 
+|**命令**|**说明**|**文档地址**|
+|---|---|---|
+|docker network create|创建一个网络|[docker network create](https://docs.docker.com/engine/reference/commandline/network_create/)|
+|docker network ls|查看所有网络|[docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_ls/)|
+|docker network rm|删除指定网络|[docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_rm/)|
+|docker network prune|清除未使用的网络|[docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_prune/)|
+|docker network connect|使指定容器连接加入某网络|[docs.docker.com](https://docs.docker.com/engine/reference/commandline/network_connect/)|
+|docker network disconnect|使指定容器连接离开某网络|[docker network disconnect](https://docs.docker.com/engine/reference/commandline/network_disconnect/)|
+|docker network inspect|查看网络详细信息|[docker network inspect](https://docs.docker.com/engine/reference/commandline/network_inspect/)|
+
+```Bash
+# 1.首先通过命令创建一个网络
+docker network create hmall
+
+# 2.然后查看网络
+docker network ls
+# 结果：
+NETWORK ID     NAME      DRIVER    SCOPE
+639bc44d0a87   bridge    bridge    local
+403f16ec62a2   hmall     bridge    local
+0dc0f72a0fbb   host      host      local
+cd8d3e8df47b   none      null      local
+# 其中，除了hmall以外，其它都是默认的网络
+
+# 3.让dd和mysql都加入该网络，注意，在加入网络时可以通过--alias给容器起别名
+# 这样该网络内的其它容器可以用别名互相访问！
+# 3.1.mysql容器，指定别名为db，另外每一个容器都有一个别名是容器名
+docker network connect hmall mysql --alias db
+# 3.2.db容器，也就是我们的java项目
+docker network connect hmall dd
+
+# 4.进入dd容器，尝试利用别名访问db
+# 4.1.进入容器
+docker exec -it dd bash
+# 4.2.用db别名访问
+ping db
+# 结果
+PING db (172.18.0.2) 56(84) bytes of data.
+64 bytes from mysql.hmall (172.18.0.2): icmp_seq=1 ttl=64 time=0.070 ms
+64 bytes from mysql.hmall (172.18.0.2): icmp_seq=2 ttl=64 time=0.056 ms
+# 4.3.用容器名访问
+ping mysql
+# 结果：
+PING mysql (172.18.0.2) 56(84) bytes of data.
+64 bytes from mysql.hmall (172.18.0.2): icmp_seq=1 ttl=64 time=0.044 ms
+64 bytes from mysql.hmall (172.18.0.2): icmp_seq=2 ttl=64 time=0.054 ms
+```
+
+在自行创建的网络中，可以通过容器名访问
+
+# 三、项目部署
+示例项目说明：
+- hmall：商城的后端代码
+- hmall-portal：商城用户端的前端代码
+- hmall-admin：商城管理端的前端代码
+
+部署的容器及端口说明：
+
+|**项目**|**容器名**|**端口**|**备注**|
+|---|---|---|---|
+|hmall|hmall|8080|黑马商城后端API入口|
+|hmall-portal|nginx|18080|黑马商城用户端入口|
+|hmall-admin|18081|黑马商城管理端入口|
+|mysql|mysql|3306|数据库|
+
+## DockerCompose
+Docker Compose可以帮助我们实现 **多个相互关联的Docker容器的快速部署**。它允许用户通过一个单独的 docker-compose.yml 模板文件（YAML 格式）来定义一组相关联的应用容器。
+
+### 基本语法
+https://docs.docker.com/compose/compose-file/compose-file-v3/
+
+docker-compose文件中可以定义多个相互关联的应用容器，每一个应用容器被称为一个服务（service）。由于service就是在定义某个应用的运行时参数，因此与`docker run`参数非常相似。
+
+举例来说，用docker run部署MySQL的命令如下：
+```Bash
+docker run -d \
+  --name mysql \
+  -p 3306:3306 \
+  -e TZ=Asia/Shanghai \
+  -e MYSQL_ROOT_PASSWORD=123 \
+  -v ./mysql/data:/var/lib/mysql \
+  -v ./mysql/conf:/etc/mysql/conf.d \
+  -v ./mysql/init:/docker-entrypoint-initdb.d \
+  --network hmall
+  mysql
+```
+
+如果用`docker-compose.yml`文件来定义，就是这样：
+```YAML
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123
+    volumes:
+      - "./mysql/conf:/etc/mysql/conf.d"
+      - "./mysql/data:/var/lib/mysql"
+    networks:
+      - new
+networks:
+  new:
+    name: hmall
+```
+
+对比如下：
+
+|**docker run 参数**|**docker compose 指令**|**说明**|
+|---|---|---|
+|--name|container_name|容器名称|
+|-p|ports|端口映射|
+|-e|environment|环境变量|
+|-v|volumes|数据卷配置|
+|--network|networks|网络|
+
+黑马商城部署文件：
+```YAML
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123
+    volumes:
+      - "./mysql/conf:/etc/mysql/conf.d"
+      - "./mysql/data:/var/lib/mysql"
+      - "./mysql/init:/docker-entrypoint-initdb.d"
+    networks:
+      - hm-net
+  hmall:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: hmall
+    ports:
+      - "8080:8080"
+    networks:
+      - hm-net
+    depends_on:
+      - mysql
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "18080:18080"
+      - "18081:18081"
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "./nginx/html:/usr/share/nginx/html"
+    depends_on:
+      - hmall
+    networks:
+      - hm-net
+networks:
+  hm-net:
+    name: hmall
+```
+
+可以在项目部署的同时构建镜像、创建网络
+
+depends_on，依赖，使当前容器在列出的容器之后创建
+
+### 基础命令
+编写好docker-compose.yml文件，就可以部署项目了。常见的命令：
+https://docs.docker.com/compose/reference/
+
+基本语法如下：
+```Bash
+docker compose [OPTIONS] [COMMAND]
+```
+
+其中，OPTIONS和COMMAND都是可选参数，比较常见的有：
+
+|**类型**|**参数或指令**|**说明**|
+|---|---|---|
+|Options|-f|指定compose文件的路径和名称|
+|-p|指定project名称。project就是当前compose文件中设置的多个service的集合，是逻辑概念|
+|Commands|up|创建并启动所有service容器|
+|down|停止并移除所有容器、网络|
+|ps|列出所有启动的容器|
+|logs|查看指定容器的日志|
+|stop|停止容器|
+|start|启动容器|
+|restart|重启容器|
+|top|查看运行的进程|
+|exec|在指定的运行中容器中执行命令|
+
+教学演示：
+```Bash
+# 1.进入root目录
+cd /root
+
+# 2.删除旧容器
+docker rm -f $(docker ps -qa)
+
+# 3.删除hmall镜像
+docker rmi hmall
+
+# 4.清空MySQL数据
+rm -rf mysql/data
+
+# 5.启动所有, -d 参数是后台启动
+docker compose up -d
+# 结果：
+[+] Building 15.5s (8/8) FINISHED
+ => [internal] load build definition from Dockerfile                                    0.0s
+ => => transferring dockerfile: 358B                                                    0.0s
+ => [internal] load .dockerignore                                                       0.0s
+ => => transferring context: 2B                                                         0.0s
+ => [internal] load metadata for docker.io/library/openjdk:11.0-jre-buster             15.4s
+ => [1/3] FROM docker.io/library/openjdk:11.0-jre-buster@sha256:3546a17e6fb4ff4fa681c3  0.0s
+ => [internal] load build context                                                       0.0s
+ => => transferring context: 98B                                                        0.0s
+ => CACHED [2/3] RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo   0.0s
+ => CACHED [3/3] COPY hm-service.jar /app.jar                                           0.0s
+ => exporting to image                                                                  0.0s
+ => => exporting layers                                                                 0.0s
+ => => writing image sha256:32eebee16acde22550232f2eb80c69d2ce813ed099640e4cfed2193f71  0.0s
+ => => naming to docker.io/library/root-hmall                                           0.0s
+[+] Running 4/4
+ ✔ Network hmall    Created                                                             0.2s
+ ✔ Container mysql  Started                                                             0.5s
+ ✔ Container hmall  Started                                                             0.9s
+ ✔ Container nginx  Started                                                             1.5s
+
+# 6.查看镜像
+docker compose images
+# 结果
+CONTAINER           REPOSITORY          TAG                 IMAGE ID            SIZE
+hmall               root-hmall          latest              32eebee16acd        362MB
+mysql               mysql               latest              3218b38490ce        516MB
+nginx               nginx               latest              605c77e624dd        141MB
+
+# 7.查看容器
+docker compose ps
+# 结果
+NAME                IMAGE               COMMAND                  SERVICE             CREATED             STATUS              PORTS
+hmall               root-hmall          "java -jar /app.jar"     hmall               54 seconds ago      Up 52 seconds       0.0.0.0:8080->8080/tcp, :::8080->8080/tcp
+mysql               mysql               "docker-entrypoint.s…"   mysql               54 seconds ago      Up 53 seconds       0.0.0.0:3306->3306/tcp, :::3306->3306/tcp, 33060/tcp
+nginx               nginx               "/docker-entrypoint.…"   nginx               54 seconds ago      Up 52 seconds       80/tcp, 0.0.0.0:18080-18081->18080-18081/tcp, :::18080-18081->18080-18081/tcp
+```
+
+打开浏览器，访问：http://yourIp:8080
+
+
+# node项目部署
 ## 如何挑选node_docker镜像
 https://www.cnblogs.com/woshimrf/p/node-docker-image.html
 https://blog.csdn.net/weixin_53312997/article/details/129046231
 
 https://hub.docker.com
 
-查看 `node:lts-bullseye-slim` Node.js镜像tag
-然后根据其 Digest 选择与之相同的具体版本号的tag
+比较小的镜像有：
+- `slim (bullseye-slim)`，node:20.12.2-bullseye-slim
+- `alpine`，node:20.12.2-alpine3.19
 
-选用 node:20.12.2-bullseye-slim 吧
+搜索镜像tag，找到lts的如 `lts-bullseye-slim`
+然后根据其 Digest 选择与之相同的具体版本号的tag（确定性标记）
+如：`20.12.2-bullseye-slim`
 
-再试试node:20.12.2-alpine3.19
+alpine是最小的，但可能有兼容性问题
+
+## docker打包
+Dockerfile
+```Dockerfile
+# FROM node:20.12.2-bullseye-slim
+# 使用更小的 node:20.12.2-alpine3.19
+FROM node:20.12.2-alpine3.19
+
+# 配置环境变量
+ENV TZ=Asia/Shanghai
+
+# 设置工作目录
+WORKDIR /app
+
+# 复制 package.json 和 pnpm-lock.yaml 文件到工作目录
+COPY package.json .
+COPY pnpm-lock.yaml .
+
+# 设置代理
+ENV http_proxy=http://192.168.2.110:10811/
+ENV https_proxy=http://192.168.2.110:10811/
+
+# 安装 pnpm
+RUN npm install -g pnpm
+
+# 安装项目依赖
+RUN pnpm install
+
+# 取消代理
+ENV http_proxy=
+ENV https_proxy=
+
+# 复制应用程序代码到工作目录
+COPY . .
+
+# 暴露默认端口
+EXPOSE 23769
+
+# 定义容器启动时运行的命令
+ENTRYPOINT ["node", "app.js"]
+```
+
+构建
+```
+docker build -t project:tag .
+```
+
+运行
+```sh
+docker run -d \
+	--name project_name \
+	-p 端口:容器内端口 \
+	-v /数据卷/data:/app/data \
+	project:tag
+```
+
+
+导出与加载镜像
+```
+docker save -o project_tag.tar project:tag
+docker load -i project_tag.tar
+```
+
