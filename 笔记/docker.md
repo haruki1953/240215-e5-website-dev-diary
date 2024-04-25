@@ -686,9 +686,9 @@ docker run -d \
 	--name project_name \
 	-p 端口:容器内端口 \
 	-v /数据卷/data:/app/data \
+	--restart unless-stopped \
 	project:tag
 ```
-
 
 导出与加载镜像
 ```
