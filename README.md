@@ -360,3 +360,6 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 ### 240420
 - 为docker学习收尾了
 - 整理docker部署node项目
+
+### 240429
+尝试改进缓存
