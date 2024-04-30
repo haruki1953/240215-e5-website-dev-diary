@@ -363,3 +363,10 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 
 ### 240429
 尝试改进缓存
+
+### 240430
+- 开始制作移动端前端，Vue3、TypeScript、Vant4组件库
+- 初始化了项目，ts还是有一点区别的
+- 引入 Vant4 组件库，解决自动引入与ts造成的变量类型未声明问题【重点】
+	- 在 eslintrc.cjs 中声明全局变量名
+	- 在 tsconfig.app.json 中添加自动引入生成的类型声明文件
