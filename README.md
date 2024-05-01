@@ -370,3 +370,8 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 - 引入 Vant4 组件库，解决自动引入与ts造成的变量类型未声明问题【重点】
 	- 在 eslintrc.cjs 中声明全局变量名
 	- 在 tsconfig.app.json 中添加自动引入生成的类型声明文件
+
+### 240501
+- 项目中的 vw 适配
+- 整体路由设计
+- 中止移动端前端开发，先学习uniapp小兔鲜的课程
