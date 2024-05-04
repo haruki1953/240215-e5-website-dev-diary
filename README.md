@@ -378,3 +378,7 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 
 ### 240503
 使用ts重写了已经写好的api、store、utils等代码
+
+### 240504
+登录注册页面
+布局 Tabbar 标签栏
