@@ -386,3 +386,6 @@ Express Admin 是一个基于Express.js的中间件，用于为MySQL, MariaDB, P
 ### 240505
 layout页面布局，快完成了
 也没干什么，但是好累
+
+### 240506
+完成了layout页面布局
