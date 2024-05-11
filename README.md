@@ -402,3 +402,13 @@ layout页面布局，快完成了
 
 ### 240510
 完成了 ApplySheet 申请分享面板 
+
+### 240511
+- 用户主页：
+- StopSheet 停止接受分享面板 
+- AddShareSheet 添加分享信息面板
+- 关注/查看动态
+- e5分享管理页：
+- 页面基础
+- ShareRegisterSheet 分享登记面板
+- E5dateForm 日期选择表单
