@@ -412,3 +412,11 @@ layout页面布局，快完成了
 - 页面基础
 - ShareRegisterSheet 分享登记面板
 - E5dateForm 日期选择表单
+
+### 240512
+- e5分享管理页：
+- ShareCancelSheet 分享注销面板
+- ShareInfoUpdateSheet 分享信息修改面板
+- 完善了e5进度条
+- 通知页：
+- 初始化了通知页与通知卡片
