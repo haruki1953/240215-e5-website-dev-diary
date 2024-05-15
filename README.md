@@ -432,3 +432,12 @@ layout页面布局，快完成了
 ### 240514
 - 动态菜单页：动态菜单、悬浮球、弹出面板
 - 动态详情页：PostCard 动态卡片、SendSheet 动态发送面板
+
+### 240515
+- 设置页
+- ProfileCard
+- AvatarCard
+- EmailCard
+- PasswordCard
+- E5Card
+- E5dateForm问题
