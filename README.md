@@ -441,3 +441,8 @@ layout页面布局，快完成了
 - PasswordCard
 - E5Card
 - E5dateForm问题
+
+### 240516
+- ClearNotifCard、DeleteUserCard
+- 根据屏幕大小重定向
+- 打包部署
