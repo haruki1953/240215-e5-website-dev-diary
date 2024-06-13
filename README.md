@@ -1,6 +1,9 @@
 e5分享网站开发记录
 
-[提问记录](assets/提问记录.md)
+- 后端（node+express+js） https://github.com/haruki1953/e5share_node
+- 前端（vue3+element plus+js） https://github.com/haruki1953/e5share_vue3
+- 移动端（vue3+vant4+ts） https://github.com/haruki1953/e5share-web-mobile
+
 
 ### 240215
 **决定了开发流程**
